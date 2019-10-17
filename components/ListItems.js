@@ -19,7 +19,11 @@ const ListItems = () => {
         {problems.map(item => {
           return (
             <div className="problem" key={item.id}>
-              {parse(item.text)}
+              <p>Problem: {item.reference_number}</p>
+              <p>Difficulty: {item.difficulty}</p>
+              <p>Video Id: {item.video_id ? item.video_id : ""}</p>
+              <p>Active: {item.active === 1 ? "Yes" : "No"}</p>
+              <p>Text Preview: {parse(item.text.trim().slice(0, 100))}</p>
             </div>
           );
         })}
@@ -33,6 +37,9 @@ const ListItems = () => {
           color: black;
         }
         .problem {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
           width: 100%;
           border-top: 1px solid grey;
           padding: 1% 0;
