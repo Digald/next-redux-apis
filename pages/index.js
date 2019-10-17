@@ -1,39 +1,31 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { withRedux } from '../lib/redux'
-import useInterval from '../lib/useInterval'
-import Clock from '../components/clock'
-import Counter from '../components/counter'
+// Libraries
+import React from "react";
+// import { useDispatch, useSelector } from "react-redux";
+import { withRedux } from "../lib/redux";
+import axios from 'axios';
+// Components
+import Layout from "../components/Layout";
+import ListItems from '../components/ListItems';
 
 const IndexPage = () => {
-  // Tick the time every second
-  const dispatch = useDispatch()
-  useInterval(() => {
-    dispatch({
-      type: 'TICK',
-      light: true,
-      lastUpdate: Date.now()
-    })
-  }, 1000)
   return (
     <>
-      <Clock />
-      <Counter />
+      <Layout />
+      <ListItems/>
+      <style jsx>{``}</style>
     </>
-  )
-}
+  );
+};
 
-IndexPage.getInitialProps = ({ reduxStore }) => {
-  // Tick the time once, so we'll have a
-  // valid time before first render
-  const { dispatch } = reduxStore
+IndexPage.getInitialProps = async ({ reduxStore }) => {
+  const { dispatch } = reduxStore;
+  const res = await axios.get('http://18.237.242.89/api/problems');
+  const problems = await res.data;
   dispatch({
-    type: 'TICK',
-    light: typeof window === 'object',
-    lastUpdate: Date.now()
+    type: 'GET_PROBLEMS',
+    problems: problems.data
   })
+  return {};
+};
 
-  return {}
-}
-
-export default withRedux(IndexPage)
+export default withRedux(IndexPage);
