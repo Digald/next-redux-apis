@@ -1,6 +1,5 @@
 // Libraries
 import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
 import { withRedux } from "../lib/redux";
 import axios from "axios";
 // Components
@@ -11,7 +10,7 @@ const IndexPage = () => {
   return (
     <>
       <Layout />
-      <ListItems />
+      <ListItems title="List of Problems" list="problems"/>
       <style jsx>{``}</style>
     </>
   );
@@ -19,22 +18,12 @@ const IndexPage = () => {
 
 IndexPage.getInitialProps = async ({ reduxStore }) => {
   const { dispatch } = reduxStore;
-  let res;
-  let problems;
-  try {
-    res = await axios.get(
-      "https://cors-anywhere.herokuapp.com/http://18.237.242.89/api/problems"
-    );
-    problems = await res.data;
-  } catch (err) {
-    console.log(err);
-  }
+  
+  const res = await axios.get('http://18.237.242.89/api/problems');
+  const problems = await res.data;
   dispatch({
     type: "GET_PROBLEMS",
     problems: problems.data
-    // pages: problems.data.pages,
-    // nextPage: 2,
-    // hasMore: (2 <= problems.data.pages ? true : false)
   });
   return {};
 };

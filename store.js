@@ -2,14 +2,10 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const initialState = {
-  problems: [],
+  problems: {},
+  passages: {},
   singleProblem: {},
-  // problemsScroll: {
-  //   pages: 0,
-  //   nextPage: 0,
-  //   nextUrl: `http://18.237.242.89/api/problems?page=`,
-  //   hasMore: false
-  // }
+  singlePassage: {}
 };
 
 const reducer = async (state = initialState, action) => {
@@ -18,6 +14,11 @@ const reducer = async (state = initialState, action) => {
       return {
         ...state,
         problems: action.problems,
+      };
+      case "GET_PASSAGES":
+      return {
+        ...state,
+        passages: action.passages,
       };
     case "GET_SINGLE_PROBLEM":
       return {
