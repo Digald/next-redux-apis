@@ -14,6 +14,9 @@ const Layout = () => {
       </nav>
       <style jsx>{`
         nav {
+          position: fixed;
+          top: 0;
+          box-shadow: 3px 3px 5px 6px rgba(0,0,0,.2);
           display: flex;
           justify-content: space-around;
           align-items: center;
