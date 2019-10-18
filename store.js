@@ -4,7 +4,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 const initialState = {
   problems: {},
   passages: {},
-  singleProblem: {}
+  singleProblem: {},
+  singlePassage: {}
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,16 +15,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         problems: action.problems
       };
-    case 'GET_SINGLE_PROBLEM':
+    case "GET_SINGLE_PROBLEM":
       return {
         ...state,
         singleProblem: action.problem
-      }
-    case 'GET_PASSAGES':
+      };
+    case "GET_PASSAGES":
       return {
         ...state,
         passages: action.passages
-      }
+      };
+    case "GET_SINGLE_PASSAGE":
+      return {
+        ...state,
+        singlePassage: action.passage
+      };
     default:
       return state;
   }

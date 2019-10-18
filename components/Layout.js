@@ -1,10 +1,28 @@
 import React from "react";
 import Link from "next/link";
 
-const Layout = () => {
+const Layout = props => {
+  let title;
+  switch (props.pathname) {
+    case "/":
+      title = "Problems List";
+      break;
+    case "/passages":
+      title = "Passages List";
+      break;
+    case "/problem":
+      title = `Selected: Problem ${props.asPath.split("=")[1]}`;
+      break;
+    case "/passage":
+      title = `Selected: Passage ${props.asPath.split("=")[1]}`;
+      break;
+    default:
+      title = "";
+  }
   return (
     <>
       <nav>
+        <h1>{title}</h1>
         <Link href="/">
           <a>Problems Page</a>
         </Link>
@@ -16,7 +34,7 @@ const Layout = () => {
         nav {
           position: fixed;
           top: 0;
-          box-shadow: 3px 3px 5px 6px rgba(0,0,0,.2);
+          box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.2);
           display: flex;
           justify-content: space-around;
           align-items: center;
@@ -27,7 +45,8 @@ const Layout = () => {
       `}</style>
       <style global jsx>{`
         html,
-        body, #__next {
+        body,
+        #__next {
           width: 100%;
           height: 100%;
           padding: 0;

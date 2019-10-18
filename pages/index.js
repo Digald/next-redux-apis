@@ -1,30 +1,30 @@
 // Libraries
 import React from "react";
 import { withRedux } from "../lib/redux";
-import fetch from 'isomorphic-unfetch';
+import fetch from "isomorphic-unfetch";
 // Components
 import Layout from "../components/Layout";
 import ListItems from "../components/ListItems";
 
-const IndexPage = () => {
+const IndexPage = (props) => {
   return (
     <>
-      <Layout />
-      <ListItems title="List of Problems" list="problems"/>
+      <Layout pathname={props.pathname} asPath={props.asPath}/>
+      <ListItems title="List of Problems" list="problems" />
       <style jsx>{``}</style>
     </>
   );
 };
 
-IndexPage.getInitialProps = async ({ reduxStore }) => {
+IndexPage.getInitialProps = async ({ reduxStore, pathname, asPath }) => {
   const { dispatch } = reduxStore;
-  const res = await fetch('http://18.237.242.89/api/problems');
-  const data = await res.json()
+  const res = await fetch("http://18.237.242.89/api/problems");
+  const data = await res.json();
   dispatch({
     type: "GET_PROBLEMS",
-    problems: await data,
+    problems: await data
   });
-  return {};
+  return { pathname, asPath };
 };
 
 export default withRedux(IndexPage);

@@ -4,20 +4,20 @@ import { useDispatch } from "react-redux";
 import { withRedux } from "../lib/redux";
 // Components
 import Layout from "../components/Layout";
-import ProblemDetails from "../components/ProblemDetails";
+import PassageDetails from "../components/PassageDetails";
 
-const ProblemPage = (props) => {
+const PassagePage = (props) => {
   return (
     <>
       <Layout pathname={props.pathname} asPath={props.asPath}/>
-      <ProblemDetails />
+      <PassageDetails />
       <style jsx>{``}</style>
     </>
   );
 };
 
-ProblemPage.getInitialProps = ({ reduxStore, pathname, asPath }) => {
+PassagePage.getInitialProps = ({ reduxStore, pathname, asPath }) => {
   return { pathname, asPath };
 };
 
-export default withRedux(ProblemPage);
+export default withRedux(PassagePage);

@@ -2,35 +2,36 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import parse from "html-react-parser";
 
-const useProblemItem = () => {
+const usePassageItem = () => {
   const store = useSelector(state => state);
   const dispatch = useDispatch();
-  return { store };
+  const getSinglePassage = data => {
+    dispatch({
+      type: "GET_SINGLE_PASSAGE",
+      passage: data
+    });
+  };
+  return { store, getSinglePassage };
 };
 
-const ProblemItem = props => {
-  const { store } = useProblemItem();
-  console.log(store);
-  const {passages} = store.passages.data
+const PassageItem = props => {
+  const { store, getSinglePassage } = usePassageItem();
+  const { passages } = store.passages.data;
   return (
     <>
       {passages.map(item => {
         return (
           <Link
+            key={item.id}
             href={{
               pathname: "/passage",
               query: { name: `${item.reference_id}` }
             }}
           >
-            <a
-              className="item"
-              key={item.id}
-              onClick={() => getSingleProblem(item)}
-            >
+            <a className="item" onClick={() => getSinglePassage(item)}>
               <p>Passage Id: {item.reference_id}</p>
-              <p>Active: {item.active === 1 ? "Yes": "No"}</p>
+              <p>Active: {item.active === 1 ? "Yes" : "No"}</p>
               <p>Title: {item.title}</p>
             </a>
           </Link>
@@ -46,6 +47,12 @@ const ProblemItem = props => {
           padding: 1% 0;
           text-decoration: none;
         }
+        .item:first-child {
+          border-top: 0;
+        }
+        a:hover {
+          background: #E3D4D1;
+        }
         p {
           color: black;
         }
@@ -54,4 +61,4 @@ const ProblemItem = props => {
   );
 };
 
-export default ProblemItem;
+export default PassageItem;

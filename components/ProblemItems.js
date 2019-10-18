@@ -24,16 +24,13 @@ const ProblemItem = props => {
       {problems.map(item => {
         return (
           <Link
+            key={item.id}
             href={{
               pathname: "/problem",
               query: { name: `${item.reference_number}` }
             }}
           >
-            <a
-              className="item"
-              key={item.id}
-              onClick={() => getSingleProblem(item)}
-            >
+            <a className="item" onClick={() => getSingleProblem(item)}>
               <p>Problem: {item.reference_number}</p>
               <p>Difficulty: {item.difficulty}</p>
               <p>Video Id: {item.video_id ? item.video_id : ""}</p>
@@ -52,6 +49,12 @@ const ProblemItem = props => {
           border-top: 1px solid grey;
           padding: 1% 0;
           text-decoration: none;
+        }
+        .item:first-child {
+          border-top: 0;
+        }
+        a:hover {
+          background: #E3D4D1;
         }
         p {
           color: black;

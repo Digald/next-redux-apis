@@ -6,17 +6,17 @@ import fetch from 'isomorphic-unfetch';
 import Layout from "../components/Layout";
 import ListItems from '../components/ListItems';
 
-const PassagesPage = () => {
+const PassagesPage = (props) => {
   return (
     <>
-      <Layout />
+      <Layout pathname={props.pathname} asPath={props.asPath}/>
       <ListItems title="List of Passages" list="passages"/>
       <style jsx>{``}</style>
     </>
   );
 };
 
-PassagesPage.getInitialProps = async ({ reduxStore }) => {
+PassagesPage.getInitialProps = async ({ reduxStore, pathname, asPath }) => {
   const { dispatch } = reduxStore;
   const res = await fetch('http://18.237.242.89/api/passages');
   const data = await res.json();
@@ -24,7 +24,7 @@ PassagesPage.getInitialProps = async ({ reduxStore }) => {
     type: "GET_PASSAGES",
     passages: data
   });
-  return {};
+  return { pathname, asPath };
 };
 
 export default withRedux(PassagesPage);
