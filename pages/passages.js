@@ -22,7 +22,9 @@ PassagesPage.getInitialProps = async ({ reduxStore, pathname, asPath }) => {
   const data = await res.json();
   dispatch({
     type: "GET_PASSAGES",
-    passages: data
+    passages: data.data.passages,
+    pages: data.data.pages,
+    currentPage: 1
   });
   return { pathname, asPath };
 };

@@ -2,7 +2,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import parse from "html-react-parser";
-import Link from "next/link";
 import NoStore from "./NoStore";
 
 const usePassageDetails = () => {

@@ -1,6 +1,6 @@
 // Libraries
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import parse from "html-react-parser";
 import NoStore from './NoStore';
 
@@ -11,7 +11,6 @@ const useProblemDetails = () => {
 
 const ProblemDetails = () => {
   const { store } = useProblemDetails();
-  console.log(store);
   let subject;
   switch (store.subject_id) {
     case "0a354dc2-0e55-489c-8e82-7efaebf112bd":
@@ -55,7 +54,7 @@ const ProblemDetails = () => {
           <ul>
             Categories:{" "}
             {store.categories.map(category => {
-              return <li>-{category.name}</li>;
+              return <li key={category.id}>-{category.name}</li>;
             })}
           </ul>
         </div>

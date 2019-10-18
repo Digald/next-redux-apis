@@ -1,6 +1,5 @@
 // Libraries
 import React from "react";
-import { useDispatch } from "react-redux";
 import { withRedux } from "../lib/redux";
 // Components
 import Layout from "../components/Layout";
@@ -16,7 +15,7 @@ const ProblemPage = (props) => {
   );
 };
 
-ProblemPage.getInitialProps = ({ reduxStore, pathname, asPath }) => {
+ProblemPage.getInitialProps = ({pathname, asPath }) => {
   return { pathname, asPath };
 };
 

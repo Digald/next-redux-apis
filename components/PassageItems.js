@@ -17,7 +17,7 @@ const usePassageItem = () => {
 
 const PassageItem = props => {
   const { store, getSinglePassage } = usePassageItem();
-  const { passages } = store.passages.data;
+  const { passages } = store;
   return (
     <>
       {passages.map(item => {
@@ -44,7 +44,6 @@ const PassageItem = props => {
           flex-wrap: wrap;
           width: 100%;
           border-top: 1px solid grey;
-          padding: 1% 0;
           text-decoration: none;
         }
         .item:first-child {
@@ -55,6 +54,7 @@ const PassageItem = props => {
         }
         p {
           color: black;
+          padding: 0 1%;
         }
       `}</style>
     </>

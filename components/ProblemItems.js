@@ -18,7 +18,7 @@ const useProblemItem = () => {
 
 const ProblemItem = props => {
   const { store, getSingleProblem } = useProblemItem();
-  const { problems } = store.problems.data;
+  const {problems} = store;
   return (
     <>
       {problems.map(item => {
@@ -35,7 +35,6 @@ const ProblemItem = props => {
               <p>Difficulty: {item.difficulty}</p>
               <p>Video Id: {item.video_id ? item.video_id : ""}</p>
               <p>Active: {item.active === 1 ? "Yes" : "No"}</p>
-              <p>Text Preview: {parse(item.text.trim())}</p>
             </a>
           </Link>
         );
@@ -43,7 +42,7 @@ const ProblemItem = props => {
       <style jsx>{`
         .item {
           display: flex;
-          justify-content: space-around;
+          justify-content: space-evenly;
           flex-wrap: wrap;
           width: 100%;
           border-top: 1px solid grey;
@@ -54,10 +53,14 @@ const ProblemItem = props => {
           border-top: 0;
         }
         a:hover {
-          background: #E3D4D1;
+          background: #e3d4d1;
         }
         p {
+          padding: 0 1%;
           color: black;
+        }
+        .loading {
+          font-weight: 100px;
         }
       `}</style>
     </>

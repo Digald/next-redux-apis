@@ -22,7 +22,9 @@ IndexPage.getInitialProps = async ({ reduxStore, pathname, asPath }) => {
   const data = await res.json();
   dispatch({
     type: "GET_PROBLEMS",
-    problems: await data
+    problems: data.data.problems,
+    pages: data.data.pages,
+    currentPage: 1,
   });
   return { pathname, asPath };
 };

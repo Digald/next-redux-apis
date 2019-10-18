@@ -24,10 +24,10 @@ const Layout = props => {
       <nav>
         <h1>{title}</h1>
         <Link href="/">
-          <a>Problems Page</a>
+          <a>Problems</a>
         </Link>
         <Link href="/passages">
-          <a>Passages Page</a>
+          <a>Passages</a>
         </Link>
       </nav>
       <style jsx>{`
