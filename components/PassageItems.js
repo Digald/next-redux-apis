@@ -1,8 +1,8 @@
-// Libraries
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 
+// grab redux store and set up actions
 const usePassageItem = () => {
   const store = useSelector(state => state);
   const dispatch = useDispatch();
@@ -15,7 +15,8 @@ const usePassageItem = () => {
   return { store, getSinglePassage };
 };
 
-const PassageItem = props => {
+// Render a list of passages from the redux store
+const PassageItem = () => {
   const { store, getSinglePassage } = usePassageItem();
   const { passages } = store;
   return (

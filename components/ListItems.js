@@ -1,12 +1,11 @@
-// Libraries
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import InfiniteScroll from "react-infinite-scroller";
 import BottomScrollListener from "react-bottom-scroll-listener";
 import fetch from "isomorphic-unfetch";
 import ProblemItems from "./ProblemItems";
 import PassageItems from "./PassageItems";
 
+// Grab redux store and create actions for this component
 const useListItems = () => {
   const store = useSelector(state => state);
   const dispatch = useDispatch();
@@ -27,6 +26,7 @@ const useListItems = () => {
   return { store, getMoreProblems, getMorePassages };
 };
 
+// Called when the user hits the page bottom. Will fetch more data from the API if there is any.
 const retrieveItems = (list, store, getMoreProblems, getMorePassages, hasMore) => {
   if (!hasMore) return;
   if (list === "problems") {
@@ -46,6 +46,7 @@ const retrieveItems = (list, store, getMoreProblems, getMorePassages, hasMore) =
   }
 };
 
+// Wraps the list of problems or passages. Fetches more data when that wrapper hits the bottom of the page.
 const ListItems = props => {
   const { store, getMoreProblems, getMorePassages } = useListItems();
   let Items, hasMore;
@@ -87,6 +88,7 @@ const ListItems = props => {
          .items-container {
             margin: 100px 0 0 0;
           }
+        }
       `}</style>
     </>
   );

@@ -1,14 +1,15 @@
-// Libraries
 import React from "react";
 import {useSelector } from "react-redux";
 import parse from "html-react-parser";
 import NoStore from './NoStore';
 
+// Grab store from redux
 const useProblemDetails = () => {
   const store = useSelector(state => state.singleProblem);
   return { store };
 };
 
+// Use redux store to display details about the selected problem
 const ProblemDetails = () => {
   const { store } = useProblemDetails();
   let subject;
@@ -69,7 +70,7 @@ const ProblemDetails = () => {
           grid-template-rows: 1fr 1fr;
           grid-template-columns: 1fr 1fr;
           grid-gap: 10px;
-          padding: 1%;
+          padding: 10px;
           border-radius: 30px;
           margin: 100px 10% 0 10%;
           max-width: 100%;
@@ -98,6 +99,12 @@ const ProblemDetails = () => {
           padding: 10px;
           border-radius: 10px;
           border: 1px solid grey;
+        }
+        @media (max-width: 768px) {
+         .details {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto
+          }
         }
       `}</style>
     </>

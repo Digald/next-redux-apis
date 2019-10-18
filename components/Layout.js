@@ -1,5 +1,8 @@
 import React from "react";
 import Link from "next/link";
+/**
+ * Header for all pages. The title in the header relies on the content that is being displayed.
+ */
 
 const Layout = props => {
   let title;
@@ -42,6 +45,11 @@ const Layout = props => {
           width: 100%;
           background: white;
         }
+        @media (max-width: 768px) {
+          h1 {
+            font-size: 20px;
+          }
+        }
       `}</style>
       <style global jsx>{`
         html,
@@ -51,17 +59,10 @@ const Layout = props => {
           height: 100%;
           padding: 0;
           margin: 0;
-          background: #11998e; /* fallback for old browsers */
-          background: -webkit-linear-gradient(
-            to right,
-            #38ef7d,
-            #11998e
-          ); /* Chrome 10-25, Safari 5.1-6 */
-          background: linear-gradient(
-            to right,
-            #38ef7d,
-            #11998e
-          ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          background: #AAFFA9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #11FFBD, #AAFFA9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #11FFBD, #AAFFA9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
         }
       `}</style>
     </>

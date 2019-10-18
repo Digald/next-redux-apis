@@ -1,9 +1,8 @@
-// Libraries
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import parse from "html-react-parser";
 
+// grab redux store and set up actions
 const useProblemItem = () => {
   const store = useSelector(state => state);
   const dispatch = useDispatch();
@@ -16,7 +15,8 @@ const useProblemItem = () => {
   return { store, getSingleProblem };
 };
 
-const ProblemItem = props => {
+// Render a list of passages from the redux store
+const ProblemItem = () => {
   const { store, getSingleProblem } = useProblemItem();
   const {problems} = store;
   return (

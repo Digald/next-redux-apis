@@ -1,14 +1,15 @@
-// Libraries
 import React from "react";
 import { useSelector } from "react-redux";
 import parse from "html-react-parser";
 import NoStore from "./NoStore";
 
+// Grab store from redux
 const usePassageDetails = () => {
   const store = useSelector(state => state.singlePassage);
   return { store };
 };
 
+// Use redux store to display details about the selected passage
 const PassageDetails = () => {
   const { store } = usePassageDetails();
   if (!store || Object.entries(store).length === 0) {
@@ -66,6 +67,12 @@ const PassageDetails = () => {
           padding: 10px;
           border-radius: 10px;
           border: 1px solid grey;
+        }
+        @media (max-width: 768px) {
+         .details {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto
+          }
         }
       `}</style>
     </>
