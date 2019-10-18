@@ -17,7 +17,6 @@ const ProblemPage = () => {
 };
 
 ProblemPage.getInitialProps = ({ reduxStore }) => {
-  const { dispatch } = reduxStore;
   return {};
 };
 

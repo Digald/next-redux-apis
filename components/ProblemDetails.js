@@ -10,6 +10,7 @@ const useProblemDetails = () => {
 
 const ProblemDetails = () => {
   const { store } = useProblemDetails();
+  console.log(store);
   let subject;
   switch (store.subject_id) {
     case "0a354dc2-0e55-489c-8e82-7efaebf112bd":
@@ -27,7 +28,7 @@ const ProblemDetails = () => {
   return (
     <>
       <div className="details">
-        {/* <h1>Selected: Problem {store.reference_number}</h1> */}
+        <h1>Selected: Problem {store.reference_number}</h1>
         <div className="grid-area">
           <h2>Problem Text</h2>
           {parse(store.text)}

@@ -3,28 +3,21 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 const initialState = {
   problems: {},
-  passages: {},
-  singleProblem: {},
-  singlePassage: {}
+  singleProblem: {}
 };
 
-const reducer = async (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_PROBLEMS":
       return {
         ...state,
-        problems: action.problems,
+        problems: action.problems
       };
-      case "GET_PASSAGES":
-      return {
-        ...state,
-        passages: action.passages,
-      };
-    case "GET_SINGLE_PROBLEM":
+    case 'GET_SINGLE_PROBLEM':
       return {
         ...state,
         singleProblem: action.problem
-      };
+      }
     default:
       return state;
   }

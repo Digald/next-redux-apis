@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import parse from "html-react-parser";
-// import ProblemItem from "../components/ProblemItem";
+import ProblemItem from "../components/ProblemItem";
 import PassageItem from "../components/PassageItem";
 
 const ListItems = props => {
@@ -10,7 +10,7 @@ const ListItems = props => {
     <>
       <div className="items-container">
         <h1>{props.title}</h1>
-        {/* {props.list === "problems" ? <ProblemItem /> : <PassageItem />} */}
+        {props.list === "problems" ? <ProblemItem /> : <PassageItem />}
       </div>
       <style jsx>{`
         .items-container {
