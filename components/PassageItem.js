@@ -4,17 +4,38 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import parse from "html-react-parser";
 
-const useProblemItem = async () => {
+const useProblemItem = () => {
   const store = useSelector(state => state);
   const dispatch = useDispatch();
   return { store };
 };
 
-const ProblemItem = (props) => {
+const ProblemItem = props => {
   const { store } = useProblemItem();
+  console.log(store);
+  const {passages} = store.passages.data
   return (
     <>
-        Hello
+      {passages.map(item => {
+        return (
+          <Link
+            href={{
+              pathname: "/passage",
+              query: { name: `${item.reference_id}` }
+            }}
+          >
+            <a
+              className="item"
+              key={item.id}
+              onClick={() => getSingleProblem(item)}
+            >
+              <p>Passage Id: {item.reference_id}</p>
+              <p>Active: {item.active === 1 ? "Yes": "No"}</p>
+              <p>Title: {item.title}</p>
+            </a>
+          </Link>
+        );
+      })}
       <style jsx>{`
         .item {
           display: flex;

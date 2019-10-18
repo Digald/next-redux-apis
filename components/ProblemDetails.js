@@ -38,7 +38,7 @@ const ProblemDetails = () => {
           {store.answers.map(answer => {
             return (
               <p className={`correct-${answer.correct}`} key={answer.id}>
-                {answer.text}
+                {answer.sequence} {answer.text}
               </p>
             );
           })}
